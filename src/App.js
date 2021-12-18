@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import { Route, Link, BrowserRouter as Router, Switch} from "react-router-dom";
+import { Route, Link, Switch} from "react-router-dom";
 import Home from "./components/Home";
 import schema from './validation/formSchema';
-// import PizzaLists from ".components/PizzaLists";
+import Pizza from "./components/Pizza";
 import PizzaForm from "./components/PizzaForm";
 
 import * as yup from 'yup';
@@ -93,40 +93,29 @@ const App = () => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
   return (
-    <div className="App">
-      
-      <nav>
+    <div className="App">      
       <h1 className='title'>YumYum Pizza</h1>      
-      <Router>
+      <nav>    
         <Link to='/'>Home</Link>      
-        <Link to='/pizza'>Order</Link>
-      </Router>
-      </nav>
-        <div id="/order-pizza">          
-        <Router>
-            <Switch>
-                
-              <h2>Pizza?</h2>
-              <Route path='/pizza-form' >
-                <PizzaForm
-                values={formValues}
-                change={inputChange}
-                submit={formSubmit}
-                disabled={disabled}
-                errors={formErrors}
-                />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </Router>
-        </div>
-      
-
-      <div className="pizzaList">
-        {/* <PizzaLists />           */}
-      </div>
+        <Link to='/pizza'>Order</Link>     
+      </nav>                    
+      <Switch>
+        <Route path='/pizza-form' >
+          <PizzaForm
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+          disabled={disabled}
+          errors={formErrors}
+          />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route>
+          <Pizza />
+        </Route>
+      </Switch>        
     </div>
   );
 };

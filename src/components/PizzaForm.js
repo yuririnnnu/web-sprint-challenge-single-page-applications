@@ -21,9 +21,10 @@ export default function PizzaForm(props) {
     }
 
     return (
-        <form id="pizza-form" className="pizza" onSubmit={onSubmit}>
-            <div className="container submit">
+        <form id="pizza-form" className="pizza container submit" onSubmit={onSubmit}>
                 <h2>Build your own Pizza</h2>                                    
+            <div className="background">                
+            </div>
                 <div className="error">
                     <div>{errors.name}</div>
                     <div>{errors.email}</div>
@@ -252,7 +253,7 @@ export default function PizzaForm(props) {
                     </label>
                 </div>
                 <button id="order-button" disabled={disabled} onSubmit={onSubmit}>SUBMIT</button>
-            </div>
+            
         </form>
     )
 }

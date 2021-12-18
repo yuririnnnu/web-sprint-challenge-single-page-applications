@@ -1,15 +1,14 @@
 describe('Yum Yum Pizza', () => {
     beforeEach(() => {
-        cy.visit("http://localhost:3001/pizza")
+        cy.visit("http://localhost:3001/pizza-form")
     })
-    const name = () => cy.get("input[name=name]")
-    const size = () => cy.get("select[name=size")
-    const instructions = () => cy.get("input[name=instructions]")
+    const name = () => cy.get("input[name=name]");
+    const size = () => cy.get("select[name=size");
+    const sauce = () => cy.get("input[type=radio]")
+    const instructions = () => cy.get("input[name=instructions]");
     const orderBtn = () => cy.get('button[id="order-button"]');
-    const olives = () => cy.get('checkbox[name="olives"]')
-    const bacon = () => cy.get('checkbox[name="bacon"]')
-    const sausage = () => cy.get('checkbox[name="sausage"]')
-    const pepperoni = () => cy.get('checkbox[name="pepperoni"]')
+    const top = () => cy.get("input[type='checkbox']");
+    const email = () => cy.get("input[name=email]");
     // - [ ] test that you can add text to the box
     it('Get Name input nad type a name in it', () => {
         name().should('exist');
@@ -25,11 +24,10 @@ describe('Yum Yum Pizza', () => {
     // - [ ] test that you can submit the form
     it ('Check to see if a user can submit the form data', () => {
         name().type('This is my first name')        
+        email().type('aaa@gmail.com')
+        sauce().check()
         size().select('large')
-        pepperoni().check()
-        olives().check()
-        sausage().check()
-        bacon().check()
+        top().check()
         instructions().type('This is instruction')
         orderBtn().click()
     })

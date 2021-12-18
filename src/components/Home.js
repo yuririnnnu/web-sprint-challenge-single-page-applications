@@ -10,18 +10,11 @@ export default function Home() {
   
     return (
         <div className='home-wrapper'>
-        <div className="background">
-        <img
-        className='home-image'
-        src='../Assets/Pizza.jpg'
-        alt='pizza'
-      />
-        <button
-          onClick={toForm}
-        >
-          Pizza???
-        </button>
-        </div>
+            <div className="background">
+                <button onClick={toForm}>
+                    Pizza?
+                </button>
+            </div>
       </div>
     )
 }
