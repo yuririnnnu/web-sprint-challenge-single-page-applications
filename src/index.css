@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+div.background {
+  background-image: url("./Assets/Pizza.jpg");
+  height: 40vh;
+  width: 100%;
+}
+.App {
+  text-align: center;
+}
+#pizza-form h2 {
+  text-decoration: none;
+}

@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+div.background {
+  background-image: url("../Assets/Pizza.jpg");
+  height: 30vh;
+}
