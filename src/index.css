@@ -13,12 +13,107 @@ code {
 }
 .background {
   background-image: url("./Assets/Pizza.jpg");
-  height: 40vh;
+  height: 50vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .App {
   text-align: center;
 }
-#pizza-form h2 {
+.choice {
+  background-color: #e6ff0a;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1% 0;
+}
+.choice h3 {
+  margin: 1px 0;
+}
+.choice h5 {
+  margin: 1px 0;
+}
+#pizza-form{
+  border-color: gray;
+  text-align: left;
+  padding-left: 5%;
+}
+.formContainer {
+  margin:auto;
+  width: 60%; 
+}
+form h2 {
+  text-align: center;
+}
+.topping {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.topping label{
+  width: 50%;
+  text-align: left;
+}
+.sauce {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#order-button{
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  padding: 3% 10%;
+  margin-top: 5%;
+  background-color: rgb(255, 166, 0);
+  border-radius: 10px;
+}
+/* .home-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+} */
+.store-header {
+  color: black;  
+  margin-left: 2rem;
+}
+header{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color:#e6ff0a;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  
+}
+
+.nav-links a:last-of-type {
+  margin-right: 0;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
   text-decoration: none;
+  color: gray;
+  font-weight: bold;
+  margin-right: 25px;
+}
+.background h4{
+  margin: 1% 40%;
+  font-size: 50px;
+  background-color: #e6ff0a;
+  border-radius: 5px;
 }

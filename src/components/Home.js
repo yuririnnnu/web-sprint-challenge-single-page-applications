@@ -10,10 +10,10 @@ export default function Home() {
   
     return (
         <div className='home-wrapper'>
-            <div className="background">
-                <button onClick={toForm}>
+            <div className="background">                
+                <h4 onClick={toForm}>
                     Pizza?
-                </button>
+                </h4>
             </div>
       </div>
     )

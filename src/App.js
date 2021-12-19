@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios';
 import { Route, Link, Switch} from "react-router-dom";
 import Home from "./components/Home";
 import schema from './validation/formSchema';
@@ -36,20 +35,9 @@ const App = () => {
   const [ formErrors, setFormErrors ] = useState(initialErrorForm)
   const [ disabled, setDisabled ] = useState(initialDisabled)
 
-  const getUsers = () => {
-    axios.get(`https://reqres.in/api/users`)
-    .then(res => {
-      console.log('get res.data.data', res.data.data)
-      setPizzas(res.data.data)
-    }).catch(err => console.error(err))
-  }
-
   const postNewPizza = newPizza => {
-    axios.post('https://reqres.in/api/users', newPizza)
-    .then(res => {
-      setPizzas([res.data, ...pizzas]);
-    }).catch(err => console.error(err))
-    .finally(() => setFormValues(initialFormValues))
+    setPizzas(newPizza);
+    setFormValues(initialFormValues);
   }
 
   const validate = (name, value) => {
@@ -73,7 +61,7 @@ const App = () => {
       email: formValues.email.trim(),
       size: formValues.size.trim(), 
       sauce: formValues.sauce.trim(), 
-      topping: ['pepperoni', 'tomatos','olives',
+      topping: ['pepperoni', 'tomatos','olives', 'sausage',
                 'bacon','garlic','italianSausage',
                 'hearts','chicker','cheese','onions',
                 'pineapple','pepper','exCheese']
@@ -85,20 +73,21 @@ const App = () => {
     postNewPizza(newPizza)
   }
 
-  useEffect(() => {
-    getUsers()
-  }, [])
 
   useEffect(() => {
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
   return (
     <div className="App">      
-      <h1 className='title'>YumYum Pizza</h1>      
-      <nav>    
-        <Link to='/'>Home</Link>      
-        <Link to='/pizza'>Order</Link>     
-      </nav>                    
+      <header>
+        <h1 className='store-header'>Yum Yum Pizza</h1>      
+        <div className='nav-links'>
+          <nav>    
+            <Link to='/'>Home</Link>      
+            <Link to='/pizza'>Order</Link>     
+          </nav>                    
+        </div>
+      </header>
       <Switch>
         <Route path='/pizza-form' >
           <PizzaForm
@@ -111,11 +100,14 @@ const App = () => {
         </Route>
         <Route exact path="/">
           <Home />
+        </Route >
+        <Route path="/pizza">
+          <Pizza key={pizzas.id} details={pizzas} />  
         </Route>
-        <Route>
-          <Pizza />
-        </Route>
-      </Switch>        
+      </Switch>
+      
+    
+      
     </div>
   );
 };
